@@ -5,14 +5,14 @@ const GameDescription = (props) => (
     <div id="logo">
       <img src={props.logoURL} />
     </div>
-    <div>
+    <div class="description">
       {props.description}
     </div>
-    <div>
+    <div class="reviews">
       Recent Reviews: {props.recentReviews}
     </div>
-    <div>
       All Reviews: {props.allReviews}
+    <div class="reviews">
     </div>
     <div>
       Release Date: {props.releaseDate}

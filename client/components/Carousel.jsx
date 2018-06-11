@@ -27,14 +27,12 @@ class Carousel extends React.Component {
       className: 'carousel'
     };
 
-    console.log(this.state.images);
-
     return (
       <Slider{...settings} id="carousel">
         {
           this.state.images.map((image) => {
             return (
-                <div style={{'padding': '5px'}}>
+                <div>
                   <img src={image}  class="image"/>
                 </div>
               )

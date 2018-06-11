@@ -4,24 +4,23 @@ import axios from 'axios';
 import GameDescription from './components/GameDescription.jsx'
 import Carousel from './components/Carousel.jsx';
 
-
 class App extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
       gameId: '1',
-      name: undefined,
-      description: undefined,
-      videoURL: undefined,
-      mainImageURL: undefined,
-      logoURL: undefined,
+      name: null,
+      description: null,
+      videoURL: null,
+      mainImageURL: null,
+      logoURL: null,
       carouselImagesURL: [],
-      recentReviews: undefined,
-      allReviews: undefined,
-      releaseDate: undefined,
-      developer: undefined,
-      publisher: undefined,
+      recentReviews: null,
+      allReviews: null,
+      releaseDate: null,
+      developer: null,
+      publisher: null,
       tags: []
     }
     this.fetchGame = this.fetchGame.bind(this);
@@ -35,7 +34,7 @@ class App extends React.Component {
 
         for (var i = 0; i < 15; i++) {
           carouselArray.push(gameData.carouselImagesURL);
-        }
+        };
 
         this.setState({
           name: gameData.name,
@@ -70,10 +69,11 @@ class App extends React.Component {
                 <Carousel images={this.state.carouselImagesURL} />
               </div>
               <div id="description" class="flex-item">
-              <GameDescription description={this.state.description} descriptionImage={this.state.descriptionImage}
-              tags={this.state.tags} logoURL={this.state.logoURL} recentReviews={this.state.recentReviews}
-              allReviews={this.state.allReviews} releaseDate={this.state.allReviews} developer={this.state.developer}
-              publisher={this.state.publisher}/>
+                <GameDescription description={this.state.description} descriptionImage={this.state.descriptionImage}
+                tags={this.state.tags} logoURL={this.state.logoURL} recentReviews={this.state.recentReviews}
+                allReviews={this.state.allReviews} releaseDate={this.state.allReviews} developer={this.state.developer}
+                publisher={this.state.publisher}
+                />
               </div>
             </div>
           </div>
