@@ -26,7 +26,7 @@ const Schema = mongoose.Schema({
 const games = mongoose.model('games', Schema);
 
 const getGame = function(gameId, callback) {
-  games.find().limit(1).exec((err, data) => {
+  games.find({id: gameId}).exec((err, data) => {
     if (err) {
       callback(err, null);
     } else {

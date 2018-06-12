@@ -11,7 +11,7 @@ app.listen(port, () => {
   console.log(`server running at: http://localhost:${port}`);
 });
 
-app.get('/1', (req, res) => {
+app.get('/:gameId', (req, res) => {
   const gameId = parseInt(req.params.gameId);
 
   const handleRequest = function(err, data) {

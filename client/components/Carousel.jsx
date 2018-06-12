@@ -23,7 +23,7 @@ class Carousel extends React.Component {
       speed: 500,
       slidesToShow: 5,
       slidesToScroll: 1,
-      arrows: true,
+      arrows: false,
       className: 'carousel'
     };
 
@@ -32,12 +32,8 @@ class Carousel extends React.Component {
         {
           this.state.images.map((image) => {
             return (
-                <div>
-                  <img src={image}  class="image"/>
-                </div>
-              )
-            }
-          )
+              <img src={image}  className="image"/>)
+          })
         }
       </Slider>
     )

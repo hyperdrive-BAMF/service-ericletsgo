@@ -26,6 +26,10 @@ class App extends React.Component {
     this.fetchGame = this.fetchGame.bind(this);
   }
 
+  getRandomInt() {
+    return Math.floor(Math.random() * (100)) + 1;
+  }
+
   fetchGame(gameId) {
     axios.get('http://localhost:3001/' + gameId)
       .then((data) => {
@@ -55,24 +59,26 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    this.fetchGame(this.state.gameId);
+    this.setState({gameId: this.getRandomInt().toString()}, () => {
+      this.fetchGame(this.state.gameId);
+    });
   }
 
   render() {
     return (
       <div>
-        <div id="background">
-        <h1 id="title">{this.state.name}</h1>
-          <div class="container">
-              <div id="images" class="flex-item">
+        <div className="background">
+        <div className="app_name">{this.state.name}</div>
+          <div className="container">
+              <div className="flex-item images">
                 <img src={this.state.mainImageURL} />
                 <Carousel images={this.state.carouselImagesURL} />
               </div>
-              <div id="description" class="flex-item">
+              <div className="flex-item description">
                 <GameDescription description={this.state.description} descriptionImage={this.state.descriptionImage}
-                tags={this.state.tags} logoURL={this.state.logoURL} recentReviews={this.state.recentReviews}
-                allReviews={this.state.allReviews} releaseDate={this.state.allReviews} developer={this.state.developer}
-                publisher={this.state.publisher}
+                  tags={this.state.tags} logoURL={this.state.logoURL} recentReviews={this.state.recentReviews}
+                  allReviews={this.state.allReviews} releaseDate={this.state.releaseDate} developer={this.state.developer}
+                  publisher={this.state.publisher}
                 />
               </div>
             </div>
