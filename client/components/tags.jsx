@@ -1,9 +1,7 @@
 import React from 'react';
 
 const Tags = (props) => (
-  <div>
-    <span>{props.tag}</span>
-  </div>
+  <a href="" className="tags">{props.tag}</a>
 )
 
 export default Tags;
