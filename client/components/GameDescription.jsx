@@ -3,7 +3,7 @@ import React from 'react';
 import Logo from './logo.jsx';
 import Tags from './tags.jsx';
 
-const GameDescription = (props) => (
+const GameDescription = props => (
   <div id="reviews_container">
     <Logo logoURL={props.logoURL} /><br />
     <dl>
@@ -36,11 +36,11 @@ const GameDescription = (props) => (
         <span>Popular user-defined tags for this product:</span>
       </dt>
       <div className="container">
-        {props.tags.map((tag, index) => <Tags key={index} tag={tag} />)}
+        {props.tags.map((tag, i) => <Tags key={i} tag={tag} />)}
         <a href="" className="tags">+</a>
       </div>
     </dl>
   </div>
-)
+);
 
 export default GameDescription;

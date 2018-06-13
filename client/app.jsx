@@ -1,8 +1,7 @@
 import React from 'react';
 import axios from 'axios';
-import styled from 'styled-components';
 
-import GameDescription from './components/GameDescription.jsx'
+import GameDescription from './components/GameDescription.jsx';
 import CarouselSlot from './components/Carousel.jsx';
 
 class App extends React.Component {
@@ -10,7 +9,7 @@ class App extends React.Component {
     super(props);
 
     this.state = {
-      gameId: '1',
+      gameId: this.getRandomInt().toString(),
       name: null,
       description: null,
       videoURL: null,
@@ -23,68 +22,21 @@ class App extends React.Component {
       developer: null,
       publisher: null,
       tags: [],
-      slideIndex: 1
-    }
+    };
     this.fetchGame = this.fetchGame.bind(this);
     this.changeImage = this.changeImage.bind(this);
-    this.slideLeft = this.slideLeft.bind(this);
-    this.slideRight = this.slideRight.bind(this);
-    this.showSlides = this.showSlides.bind(this);
   }
 
   componentDidMount() {
-    this.setState({gameId: this.getRandomInt().toString()}, () => {
-      this.fetchGame(this.state.gameId);
-    });
-  }
-
-  getOrder(itemIndex) {
-    const position = this.state.position;
-    const { children } = this.props
-    const numItems = this.state.carouselImagesURL.length || 1
-
-    if (itemIndex - position < 0) {
-      return numItems - Math.abs(itemIndex - position)
-    }
-    return itemIndex - position
-  }
-
-  changeImage(event) {
-    this.setState({mainImageURL: event})
-  }
-
-  showSlides(n) {
-    var slides = document.getElementsByClassName("image-holder");
-    console.log(slides)
-
-    if (n > slides.length) {
-      this.setState({slideIndex: 1});
-    }
-    if (n < 1) {
-      this.setState({slideIndex: slides.length});
-    }
-    for (var i = 0; i < slides.length; i++) {
-      slides[i].style.display = "none";
-    }
-    slides[this.state.slideIndex-1].style.display = "block";
-  }
-
-  slideLeft(n) {
-    let currentIndex = this.state.slideIndex;
-
-    this.showSlides(this.state.slideIndex - 1);
-    this.setState({slideIndex: currentIndex - 1});
-  }
-
-  slideRight(n) {
-    let currentIndex = this.state.slideIndex;
-
-    this.showSlides(this.state.slideIndex + 1);
-    this.setState({slideIndex: currentIndex + 1})
+    this.fetchGame(this.state.gameId);
   }
 
   getRandomInt() {
     return Math.floor(Math.random() * (100)) + 1;
+  }
+
+  changeImage(event) {
+    this.setState({ mainImageURL: event });
   }
 
   fetchGame(gameId) {
@@ -92,15 +44,15 @@ class App extends React.Component {
       .then((data) => {
         const gameData = data.data[0];
 
-        //for testing only
-        let carouselArray = [];
-        for (var i = 0; i < 15; i++) {
+        // for testing only
+        const carouselArray = [];
+        for (let i = 0; i < 15; i++) {
           carouselArray.push(gameData.carouselImagesURL);
         };
 
-        //for testing only
+        // for testing only
         let tagsArray = [];
-        for (var i = 0; i < 3; i++) {
+        for (let i = 0; i < 3; i++) {
           tagsArray.push(gameData.tags);
         }
 
@@ -116,7 +68,7 @@ class App extends React.Component {
           releaseDate: gameData.releaseDate,
           developer: gameData.developer,
           publisher: gameData.publisher,
-          tags: tagsArray
+          tags: tagsArray,
         });
       })
       .catch((err) => console.log(err));
@@ -131,19 +83,31 @@ class App extends React.Component {
             <div className="flex-item images">
               <img className="image" src={this.state.mainImageURL} />
               <div className="carousel container">
-                {this.state.carouselImagesURL.map((image, index) => <CarouselSlot key={index} image={image} changeImage={this.changeImage}/>)}
+                {this.state.carouselImagesURL.map((image, i) => {
+                  <CarouselSlot
+                    key={i}
+                    image={image}
+                    changeImage={this.changeImage}
+                  /> })
+                }
               </div>
             </div>
             <div className="flex-item description">
-              <GameDescription description={this.state.description} descriptionImage={this.state.descriptionImage}
-                tags={this.state.tags} logoURL={this.state.logoURL} recentReviews={this.state.recentReviews}
-                allReviews={this.state.allReviews} releaseDate={this.state.releaseDate} developer={this.state.developer}
+              <GameDescription
+                description={this.state.description}
+                descriptionImage={this.state.descriptionImage}
+                tags={this.state.tags}
+                logoURL={this.state.logoURL}
+                recentReviews={this.state.recentReviews}
+                allReviews={this.state.allReviews}
+                releaseDate={this.state.releaseDate}
+                developer={this.state.developer}
                 publisher={this.state.publisher}
               />
             </div>
           </div>
         </div>
-      </div>)
+      </div>);
   }
 }
 
