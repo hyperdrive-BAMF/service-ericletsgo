@@ -5,6 +5,11 @@ const db = require('../database/index.js');
 const app = express();
 const port = 3001;
 
+app.use((req, res, next) => {
+  res.header('Access-Control-Allow-Origin', '*');
+  next();
+});
+
 app.use(express.static(path.join(__dirname, '../public')));
 
 app.listen(port, () => {
