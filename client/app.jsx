@@ -40,9 +40,9 @@ class App extends React.Component {
   }
 
   fetchGame(gameId) {
-    axios.get(`/${gameId}`)
+    axios.get(`/splashpage/${gameId}`)
       .then((data) => {
-        const gameData = data.data[0];
+        const gameData = data.data;
 
         // for testing only
         const carouselArray = [];
