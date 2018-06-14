@@ -1,47 +1,9 @@
 import React from 'react';
-import Slider from 'react-slick';
 
-class Carousel extends React.Component {
-  constructor(props) {
-    super(props);
+const CarouselSlot = props => (
+  <div className="image-holder">
+    <img alt="screenshot" src={props.image} onClick={() => props.changeImage(props.image)} />
+  </div>
+);
 
-    this.state = {
-      images: this.props.images
-    }
-  }
-
-  componentDidUpdate(prevProps) {
-    if (prevProps.images !== this.props.images) {
-      this.setState({images: this.props.images})
-    }
-  }
-
-  render() {
-    var settings = {
-      dots: false,
-      infinite: false,
-      speed: 500,
-      slidesToShow: 5,
-      slidesToScroll: 1,
-      arrows: true,
-      className: 'carousel'
-    };
-
-    return (
-      <Slider{...settings} id="carousel">
-        {
-          this.state.images.map((image) => {
-            return (
-                <div>
-                  <img src={image}  class="image"/>
-                </div>
-              )
-            }
-          )
-        }
-      </Slider>
-    )
-  }
-}
-
-export default Carousel;
+export default CarouselSlot;
