@@ -25,6 +25,7 @@ class App extends React.Component {
     };
     this.fetchGame = this.fetchGame.bind(this);
     this.changeImage = this.changeImage.bind(this);
+    this.getRandomInt = this.getRandomInt.bind(this);
   }
 
   componentDidMount() {
@@ -42,10 +43,10 @@ class App extends React.Component {
   fetchGame(gameId) {
     axios.get(`/splashpage/${gameId}`)
       .then((data) => {
-        const gameData = data.data;
+        const gameData = data.data[0];
 
         // for testing only
-        const carouselArray = [];
+        let carouselArray = [];
         for (let i = 0; i < 15; i++) {
           carouselArray.push(gameData.carouselImagesURL);
         };

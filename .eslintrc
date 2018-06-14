@@ -10,4 +10,4 @@
     "react/prop-types": [2]
   },
   extends: ["airbnb"]
-};
+}
