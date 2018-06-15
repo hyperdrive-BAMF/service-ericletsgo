@@ -14,13 +14,13 @@ const Schema = mongoose.Schema({
   'videoURL': String,
   'mainImageURL': String,
   'logoURL': String,
-  'carouselImagesURL': String,
+  'carouselImagesURL': [String],
   'recentReviews': String,
   'allReviews': String,
   'releaseDate': String,
   'developer': String,
   'publisher': String,
-  'tags': Array
+  'tags': [String]
 });
 
 const games = mongoose.model('games', Schema);

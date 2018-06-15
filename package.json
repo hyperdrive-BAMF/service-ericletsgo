@@ -22,7 +22,8 @@
     "mongo": "^0.1.0",
     "mongoose": "^5.1.4",
     "react": "^16.4.0",
-    "react-dom": "^16.2.0"
+    "react-dom": "^16.2.0",
+    "rword": "^2.2.0"
   },
   "devDependencies": {
     "babel-eslint": "^8.2.3",

@@ -1401,6 +1401,8 @@ var db = [
   }
 ]
 
+const rword = require('rword');
+
 const getRndInteger = (min, max) => {
   return Math.floor(Math.random() * (max - min) ) + min;
 }
@@ -1412,7 +1414,8 @@ const inject = () => {
     for (var i = 0; i < getRndInteger(5, 18); i++) {
       data.carouselImagesURL.push("https://s3-us-west-1.amazonaws.com/steam-game-images1/game_image_" + getRndInteger(1000, 1081).toString() + ".jpg");
     }
-    data.logoURL = `https://s3-us-west-1.amazonaws.com/steam-game-logos/game_logo_  ${getRndInteger(1000, 1202).toString()} .jpg`
+    data.logoURL = `https://s3-us-west-1.amazonaws.com/steam-game-logos/game_logo_${getRndInteger(1000, 1202).toString()}.jpg`
+    data.tags = rword.generate(getRndInteger(3, 6), { length: '3-7' });
   });
   console.log(db);
 }

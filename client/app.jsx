@@ -54,25 +54,19 @@ class App extends React.Component {
       .then((data) => {
         const gameData = data.data[0];
 
-        // for testing only
-        let tagsArray = [];
-        for (let i = 0; i < 3; i++) {
-          tagsArray.push(gameData.tags);
-        }
-
         this.setState({
           name: gameData.name,
           description: gameData.description,
           videoURL: gameData.videoURL,
           mainImageURL: gameData.mainImageURL,
           logoURL: gameData.logoURL,
-          carouselImagesURL: carouselArray,
+          carouselImagesURL: gameData.carouselImagesURL,
           recentReviews: gameData.recentReviews,
           allReviews: gameData.allReviews,
           releaseDate: gameData.releaseDate,
           developer: gameData.developer,
           publisher: gameData.publisher,
-          tags: tagsArray,
+          tags: gameData.tags,
         });
       })
       .catch((err) => console.log(err));
