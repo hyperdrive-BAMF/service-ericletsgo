@@ -2,7 +2,7 @@ import React from 'react';
 
 const Logo = props => (
   <div className="container logo">
-    <img alt="Logo" src={props.logoURL} />
+    <img className="image-logo" alt="Logo" src={props.logoURL} />
   </div>
 );
 

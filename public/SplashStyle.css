@@ -21,14 +21,20 @@ br {
   font-size: 26px;
   font-weight: normal;
   line-height: 32px;
-  margin-left: 157px;
-  margin-top: 30px;
   text-overflow: ellipsis;
   padding-left: 0px;
 }
 
 .background {
-  background-color: #1b2838;
+  margin: 0 auto;
+  display: block;
+  width: 1000px;
+}
+
+.block-splash {
+  display: block;
+  background-color: rgba(27, 40, 56, 1);
+  padding-top: 25px;
 }
 
 .carousel {
@@ -38,21 +44,26 @@ br {
 }
 
 .carousel::-webkit-scrollbar {
-    width: 12px;
-}
-
-.scroll::-webkit-button {
-    width: 12px;
+  width: 12px;
 }
 
 .carousel::-webkit-scrollbar-track {
-    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
-    border-radius: 10px;
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.2);
+  border-radius: 3px;
 }
 
-.scroll::-webkit-scrollbar-thumb {
-    border-radius: 10px;
-    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5);
+.carousel::-webkit-scrollbar-thumb {
+  border-radius: 3px;
+  width: auto;
+  background-color: rgba( 35, 60, 81, 0.4 );
+}
+
+.carousel::-webkit-scrollbar-thumb:hover {
+  border-radius: 3px;
+  width: auto;
+  background: linear-gradient(135deg, #3d6c8d 0%,#2e5470 100%);
+  background-color: #c6d4df;
+  cursor: pointer;
 }
 
 .carousel .image-holder {
@@ -94,7 +105,7 @@ br {
   max-height: 111px;
   overflow: hidden;
   padding-right: 0;
-  width: 325px;
+  width: 300px;
 }
 
 .has_pointer {
@@ -109,15 +120,25 @@ br {
 .images {
   display: inline-block;
   height: 500px;
-  margin-left: 150px;
   width: 600px;
 }
 
+.image-carousel {
+  height: 65px;
+  width: 115px;
+}
+
 .image-holder {
+  display: inline-block;
   border-color: white;
-  border-radius: 10px;
+  border-radius: 1px;
   height: 75px;
   width: 135px;
+}
+
+.image-logo {
+  height: 150px;
+  width: 300px;
 }
 
 .links {
@@ -203,6 +224,14 @@ br {
   text-overflow: ellipsis;
 }
 
+.tag-container {
+  width: 300px;
+  height: auto;
+  display: flex;
+  flex-direction: row;
+  flex-flow: row wrap;
+}
+
 .tag-subtitle {
   color: #556772;
   font-size: 12px;
@@ -213,7 +242,6 @@ br {
   color: white;
   font-family: "Motiva Sans", Sans-serif;
   font-weight: normal;
-  margin-left: 157px;
   margin-top: 30px;
   padding-left: 0px;
 }

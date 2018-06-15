@@ -35,8 +35,13 @@ const GameDescription = props => (
       <dt className="tag-subtitle container">
         <span>Popular user-defined tags for this product:</span>
       </dt>
-      <div className="container">
-        {props.tags.map((tag, i) => <Tags key={i} tag={tag} />)}
+      <div className="tag-container">
+        {props.tags.map((tag) =>
+          <Tags
+            key={props.gameId}
+            tag={tag}
+          />)
+        }
         <a href="" className="tags">+</a>
       </div>
     </dl>

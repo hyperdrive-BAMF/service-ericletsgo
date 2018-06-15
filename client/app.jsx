@@ -7,12 +7,12 @@ import CarouselSlot from './components/Carousel.jsx';
 class App extends React.Component {
   constructor(props) {
     super(props);
-
+    // images 1000 - 1081
+    // logo 1000 1202
     this.state = {
       gameId: this.getRandomInt().toString(),
       name: null,
       description: null,
-      videoURL: null,
       mainImageURL: null,
       logoURL: null,
       carouselImagesURL: [],
@@ -26,6 +26,7 @@ class App extends React.Component {
     this.fetchGame = this.fetchGame.bind(this);
     this.changeImage = this.changeImage.bind(this);
     this.getRandomInt = this.getRandomInt.bind(this);
+    // this.showSlides = this.showSlides.bind(this);
   }
 
   componentDidMount() {
@@ -39,6 +40,14 @@ class App extends React.Component {
   changeImage(event) {
     this.setState({ mainImageURL: event });
   }
+
+  // showSlides() {
+  //   let i;
+  //   let slides = this.state.carouselImagesURL;
+  //   for (i = 0; i < slides.length; i++) {
+  //     setTimeout(this.setState({ mainImageURL: slides[i] }), 2000);
+  //   }
+  // }
 
   fetchGame(gameId) {
     axios.get(`/splashpage/${gameId}`)
@@ -77,16 +86,16 @@ class App extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="block-splash">
         <div className="background">
           <div className="app_name">{this.state.name}</div>
           <div className="container">
             <div className="flex-item images">
               <img className="image" src={this.state.mainImageURL} />
               <div className="carousel container">
-                {this.state.carouselImagesURL.map((image, i) =>
+                {this.state.carouselImagesURL.map((image) =>
                   <CarouselSlot
-                    key={i}
+                    key={this.state.gameId}
                     image={image}
                     changeImage={this.changeImage}
                   />)
@@ -95,6 +104,7 @@ class App extends React.Component {
             </div>
             <div className="flex-item description">
               <GameDescription
+                gameId={this.state.gameId}
                 description={this.state.description}
                 descriptionImage={this.state.descriptionImage}
                 tags={this.state.tags}
