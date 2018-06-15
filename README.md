@@ -17,7 +17,7 @@
 
 ## Usage
 
-mongoimport -d gamedb -c games --type csv --file MOCK_DATA.csv --headerline 
+mongoimport -d gamedb -c games --type json --file dummy.json --jsonArray
 
 ## Requirements
 
