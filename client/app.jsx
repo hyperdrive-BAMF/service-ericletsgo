@@ -93,9 +93,9 @@ class App extends React.Component {
             <div className="flex-item images">
               <img className="image" src={this.state.mainImageURL} />
               <div className="carousel container">
-                {this.state.carouselImagesURL.map((image) =>
+                {this.state.carouselImagesURL.map((image, i) =>
                   <CarouselSlot
-                    key={this.state.gameId}
+                    key={i}
                     image={image}
                     changeImage={this.changeImage}
                   />)

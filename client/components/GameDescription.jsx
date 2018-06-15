@@ -36,9 +36,9 @@ const GameDescription = props => (
         <span>Popular user-defined tags for this product:</span>
       </dt>
       <div className="tag-container">
-        {props.tags.map((tag) =>
+        {props.tags.map((tag, i) =>
           <Tags
-            key={props.gameId}
+            key={i}
             tag={tag}
           />)
         }
