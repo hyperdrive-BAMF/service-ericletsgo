@@ -55,12 +55,6 @@ class App extends React.Component {
         const gameData = data.data[0];
 
         // for testing only
-        let carouselArray = [];
-        for (let i = 0; i < 15; i++) {
-          carouselArray.push(gameData.carouselImagesURL);
-        };
-
-        // for testing only
         let tagsArray = [];
         for (let i = 0; i < 3; i++) {
           tagsArray.push(gameData.tags);
